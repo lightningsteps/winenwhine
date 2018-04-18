@@ -20,6 +20,53 @@ export class AppComponent implements OnInit {
     this.getReviews();
   }
 
+  search(pattern: String) {
+    this.comments = new Array<CommentData>();
+    this.wines = new Array<Wine>();
+
+    this._appService.getReviewsSearch(pattern.toLocaleLowerCase()).subscribe(
+      response => {
+        console.log(response);
+        if (response['_body'].length < 3) {
+          alert("No results found.");
+          console.log("No results found.");
+          return;
+        }
+        for (let i = 0; i < response.json().length; i++) {
+
+          const win = new Wine();
+          win.id = Number(response.json()[i]['id']);
+          win.country = response.json()[i]['country'];
+          win.description = response.json()[i]['description'];
+          win.designation = response.json()[i]['designation'];
+          win.points = Number(response.json()[i]['points']);
+          win.price = Number(response.json()[i]['price']);
+          win.province = response.json()[i]['province'];
+          win.region_1 = response.json()[i]['region_1'];
+          win.region_2 = response.json()[i]['region_2'];
+          win.taster_name = response.json()[i]['taster_name'];
+          win.taster_twitter_handle = response.json()[i]['taster_twitter_handle'];
+          win.title = response.json()[i]['title'];
+          win.variety = response.json()[i]['variety'];
+          win.winery = response.json()[i]['winery'];
+
+          let coms = Array<CommentData>();
+
+          for (let j = 0; j < response.json()[i]['comments'].length; j++) {
+
+            const com = new CommentData();
+            com.commenter = response.json()[i]['comments'][j]['commenter'];
+            com.comment = response.json()[i]['comments'][j]['comment'];
+
+            coms.push(com);
+          }
+          win.comments = coms;
+          this.wines.push(win);
+        }
+      }
+    )
+  }
+
   newComment() {
     //this.model = new CommentData();
   }

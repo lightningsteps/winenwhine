@@ -17,6 +17,11 @@ export class AppService {
     return this._http.get( this.baseUrl + 'getReviews');
   }
 
+  getReviewsSearch(pattern: String): Observable<any> {
+    console.log(this.baseUrl + pattern + '/getReview');
+    return this._http.get( this.baseUrl + pattern + '/getReview');
+  }
+
   sendComments(id: number, comment: CommentData): Observable<Response> {
     const headers = new Headers({ 'ContentType': 'application/x-www-form-urlencoded'});
     const options = new RequestOptions({ headers: headers });
