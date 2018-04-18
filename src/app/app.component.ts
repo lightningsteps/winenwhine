@@ -82,5 +82,7 @@ export class AppComponent implements OnInit {
     cNew.comment = comBody;
 
     this.sendComment(id, cNew);
+    console.log(id);
+    console.log(cNew);
   }
 }
