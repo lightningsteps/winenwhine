@@ -13,7 +13,8 @@ export class AppComponent implements OnInit {
   constructor(private _appService: AppService) { }
 
   comments: Array<CommentData>;
-  wines: Array<Wine>;
+  wines: Array<Wine>;    
+  p: number = 1;
 
   ngOnInit() {
     this.getReviews();
