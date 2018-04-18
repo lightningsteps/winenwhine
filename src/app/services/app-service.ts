@@ -8,16 +8,18 @@ import { Wine } from '../models/Wine';
 @Injectable()
 export class AppService {
 
+  baseUrl: string = "http://localhost:3000/";
+
   constructor(private _http: Http) {
   }
 
   getReviews(): Observable<any> {
-    return this._http.get('http://localhost:3000/getReviews');
+    return this._http.get( this.baseUrl + 'getReviews');
   }
 
   sendComments(id: number, comment: CommentData): Observable<Response> {
     const headers = new Headers({ 'ContentType': 'application/x-www-form-urlencoded'});
 
-    return this._http.post('http://NESTONESTO/' + id + '/comments', comment);
+    return this._http.post(this.baseUrl + id + '/comments', comment);
   }
 }
