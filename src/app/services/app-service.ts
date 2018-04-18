@@ -19,7 +19,12 @@ export class AppService {
 
   sendComments(id: number, comment: CommentData): Observable<Response> {
     const headers = new Headers({ 'ContentType': 'application/x-www-form-urlencoded'});
+    const options = new RequestOptions({ headers: headers });
 
+<<<<<<< HEAD
+    return this._http.post('http://http://localhost:3000/' + id.toString() + '/comments', comment, options);
+=======
     return this._http.post(this.baseUrl + id + '/comments', comment);
+>>>>>>> 0551cd2e9ac87c2072f77ca994b629e33f8e12b2
   }
 }
