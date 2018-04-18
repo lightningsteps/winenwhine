@@ -1,0 +1,9 @@
+#topBar {
+  margin: 0;
+  height: 750px;
+  background: url('../assets/images/splash.jpg')no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
