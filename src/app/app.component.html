@@ -16,11 +16,11 @@
   <mat-card>
     <form>
       <mat-form-field class="example-full-width">
-        <input matInput id="name" required placeholder="Your name" value="">
+        <input matInput [(ngModel)]="name" required placeholder="Your name" value="" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <textarea id="commentBody" required matInput placeholder="Leave a comment"></textarea>
+        <textarea [(ngModel)]="commentBody" required matInput placeholder="Leave a comment" [ngModelOptions]="{standalone: true}"></textarea>
       </mat-form-field>
       <button mat-raised-button (click)="onSubmit(win.id, name, commentBody)">Submit Comment</button>
     </form>

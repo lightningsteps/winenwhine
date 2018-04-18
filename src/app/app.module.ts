@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { AppService } from './services/app-service';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatInputModule} from '@angular/material/input';
     MatDividerModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
