@@ -1,6 +1,6 @@
 <div id="topBar"></div>
 
-<ng-container *ngFor="let win of wines">
+<ng-container *ngFor="let win of wines | paginate: { itemsPerPage: 2, currentPage: p, id: 'first' }">
   <mat-card>
     <mat-card-title>{{win.title}}</mat-card-title>
     <mat-card-subtitle>{{win.variety}}</mat-card-subtitle>
@@ -25,9 +25,12 @@
       <button mat-raised-button (click)="onSubmit(win.id, name, commentBody)">Submit Comment</button>
     </form>
   </mat-card>
+
   <mat-divider></mat-divider>
   <br>
   <br>
   <br>
   <br>
 </ng-container>
+
+<pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>
