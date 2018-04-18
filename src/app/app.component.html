@@ -12,15 +12,15 @@
     </mat-card>
   </ng-container>
   <mat-card>
-    <form (ngSubmit)="onSubmit(win.id, name, commentBody)" ng-controller="#comment">
+    <form>
       <mat-form-field class="example-full-width">
-        <input matInput [(ngModel)]="name" required placeholder="Your name" value="">
+        <input matInput id="name" required placeholder="Your name" value="">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <textarea [(ngModel)]="commentBody" required matInput placeholder="Leave a comment"></textarea>
+        <textarea id="commentBody" required matInput placeholder="Leave a comment"></textarea>
       </mat-form-field>
-      <button mat-raised-button type="submit">Submit Comment</button>
+      <button mat-raised-button (click)="onSubmit(win.id, name, commentBody)">Submit Comment</button>
     </form>
   </mat-card>
   <mat-divider></mat-divider>

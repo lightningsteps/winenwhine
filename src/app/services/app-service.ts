@@ -12,12 +12,12 @@ export class AppService {
   }
 
   getReviews(): Observable<any> {
-    return this._http.get('http://demo5732405.mockable.io/getReviews');
+    return this._http.get('http://localhost:3000/getReviews');
   }
 
   sendComments(id: number, comment: CommentData): Observable<Response> {
     const headers = new Headers({ 'ContentType': 'application/x-www-form-urlencoded'});
 
-    return this._http.post('http://NESTONESTO/' + id + '/comments', comment);
+    return this._http.post('http://http://localhost:3000/' + id + '/comments', comment);
   }
 }
