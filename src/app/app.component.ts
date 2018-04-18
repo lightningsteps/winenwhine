@@ -64,18 +64,20 @@ export class AppComponent implements OnInit {
         }
       }
     )
-
-    //console.log(this.wines);
   }
 
   sendComment(id: number, com: CommentData) {
     this._appService.sendComments(id, com).subscribe(
       response => {
-        console.log(response);
-        //console.log(id);
-        //console.log(com);
+        console.log(response.json());
+        this.wines.forEach(element => {
+          if(element.id === response.json()['id']) {
+            element.comments = response.json()['comments'];
+          }
+        });
       });
   }
+
 
   onSubmit(id: number, comName: string, comBody: string){
     const cNew = new CommentData();
@@ -87,6 +89,6 @@ export class AppComponent implements OnInit {
     console.log(cNew);
 
     cNew.commenter = "";
-    cNew.comment = ""; 
+    cNew.comment = "";
   }
 }
