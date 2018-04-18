@@ -10,6 +10,6 @@ export class AppService {
   }
 
   getReviews(): Observable<any> {
-    return this._http.get('http://demo5732405.mockable.io/getReviews');
+    return this._http.get('http://localhost:3000/getReviews');
   }
 }
