@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     this.getReviews();
   }
 
-  newComment () {
+  newComment() {
     //this.model = new CommentData();
   }
 
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
 
     this._appService.getReviews().subscribe(
       response => {
-        console.log(response);
+        //console.log(response);
         for (let i = 0; i < response.json().length; i++) {
 
           const win = new Wine();
@@ -64,15 +64,15 @@ export class AppComponent implements OnInit {
       }
     )
 
-    console.log(this.wines);
+    //console.log(this.wines);
   }
 
   sendComment(id: number, com: CommentData) {
     this._appService.sendComments(id, com).subscribe(
       response => {
         console.log(response);
-        console.log(id);
-        console.log(com);
+        //console.log(id);
+        //console.log(com);
       });
   }
 
