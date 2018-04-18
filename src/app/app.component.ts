@@ -66,4 +66,21 @@ export class AppComponent implements OnInit {
 
     console.log(this.wines);
   }
+
+  sendComment(id: number, com: CommentData) {
+    this._appService.sendComments(id, com).subscribe(
+      response => {
+        console.log(response);
+        console.log(id);
+        console.log(com);
+      });
+  }
+
+  onSubmit(id: number, comName: string, comBody: string){
+    const cNew = new CommentData();
+    cNew.commenter = comName;
+    cNew.comment = comBody;
+
+    this.sendComment(id, cNew);
+  }
 }
