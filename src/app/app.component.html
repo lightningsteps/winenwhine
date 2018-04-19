@@ -271,7 +271,7 @@
     <button (click)="search(pattern)" mat-raised-button>Search</button>
 </div>
 
-<ng-container *ngFor="let win of wines | paginate: { itemsPerPage: 2, currentPage: p, id: 'first' }">
+<ng-container *ngFor="let win of wines | paginate: { itemsPerPage: 2, currentPage: p, id: 'first' }; let i=index;">
   <mat-card>
     <mat-card-title>{{win.title}}</mat-card-title>
     <mat-card-subtitle>{{win.variety}}</mat-card-subtitle>
@@ -287,13 +287,13 @@
   <mat-card>
     <form>
       <mat-form-field class="example-full-width">
-        <input matInput [(ngModel)]="name" required placeholder="Your name" value="" [ngModelOptions]="{standalone: true}">
+        <input matInput [(ngModel)]="wines[i].commenter" required placeholder="Your name" value="" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <textarea [(ngModel)]="commentBody" required matInput placeholder="Leave a comment" [ngModelOptions]="{standalone: true}"></textarea>
+        <textarea [(ngModel)]="wines[i].comment" required matInput placeholder="Leave a comment" [ngModelOptions]="{standalone: true}"></textarea>
       </mat-form-field>
-      <button mat-raised-button (click)="onSubmit(win.id, name, commentBody)">Submit Comment</button>
+      <button mat-raised-button (click)="onSubmit(win.id, wines[i].commenter, wines[i].comment)" (click)="wines[i].commenter = ''; wines[i].comment=''">Submit Comment</button>
     </form>
   </mat-card>
 
