@@ -265,43 +265,45 @@
 </div>
 
 <div>
-    <mat-form-field>
-      <input [(ngModel)]="pattern" matInput placeholder="Search by title" value="Noir" name="pattern">
-    </mat-form-field>
-    <button (click)="search(pattern)" mat-raised-button>Search</button>
+  <mat-form-field>
+    <input [(ngModel)]="pattern" matInput placeholder="Search by title" value="Noir" name="pattern">
+  </mat-form-field>
+  <button (click)="search(pattern)" mat-raised-button>Search</button>
 </div>
 
+
 <ng-container *ngFor="let win of wines | paginate: { itemsPerPage: 2, currentPage: p, id: 'first' }; let i=index;">
-  <mat-card>
-    <mat-card-title>{{win.title}}</mat-card-title>
-    <mat-card-subtitle>{{win.variety}}</mat-card-subtitle>
-    <mat-card-content>{{win.description}}</mat-card-content>
-    <mat-card-footer>{{win.taster_name}} {{win.taster_twitter_handle}}</mat-card-footer>
-  </mat-card>
-  <ng-container *ngFor="let wcom of win.comments">
-    <mat-card>
-      <mat-card-subtitle>{{wcom.commenter}}</mat-card-subtitle>
-      <mat-card-content>{{wcom.comment}}</mat-card-content>
-    </mat-card>
-  </ng-container>
-  <mat-card>
-    <form>
-      <mat-form-field class="example-full-width">
-        <input matInput [(ngModel)]="wines[i].commenter" required placeholder="Your name" value="" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
 
-      <mat-form-field class="example-full-width">
-        <textarea [(ngModel)]="wines[i].comment" required matInput placeholder="Leave a comment" [ngModelOptions]="{standalone: true}"></textarea>
-      </mat-form-field>
-      <button mat-raised-button (click)="onSubmit(win.id, wines[i].commenter, wines[i].comment)" (click)="wines[i].commenter = ''; wines[i].comment=''">Submit Comment</button>
-    </form>
-  </mat-card>
+          <mat-panel-title>{{win.title}}</mat-panel-title>
+          <mat-panel-description> {{win.variety}}</mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-card>
+          <mat-card-content>{{win.description}}</mat-card-content>
+        </mat-card>
+      <mat-card-footer>{{win.taster_name}} {{win.taster_twitter_handle}}</mat-card-footer>
+      <ng-container *ngFor="let wcom of win.comments">
+        <mat-card>
+          <mat-card-subtitle>{{wcom.commenter}}</mat-card-subtitle>
+          <mat-card-content>{{wcom.comment}}</mat-card-content>
+        </mat-card>
+      </ng-container>
+      <mat-card>
+        <form>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="wines[i].commenter" required placeholder="Your name" value="" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
 
-  <mat-divider></mat-divider>
-  <br>
-  <br>
-  <br>
-  <br>
+          <mat-form-field class="example-full-width">
+            <textarea [(ngModel)]="wines[i].comment" required matInput placeholder="Leave a comment" [ngModelOptions]="{standalone: true}"></textarea>
+          </mat-form-field>
+          <button mat-raised-button (click)="onSubmit(win.id, wines[i].commenter, wines[i].comment)" (click)="wines[i].commenter = ''; wines[i].comment=''">Submit Comment</button>
+        </form>
+      </mat-card>
+    </mat-expansion-panel>
+    </mat-accordion>
 </ng-container>
 
 <pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>

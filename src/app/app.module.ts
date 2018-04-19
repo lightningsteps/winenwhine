@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatButtonModule,
     MatInputModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatExpansionModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
