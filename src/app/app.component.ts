@@ -69,10 +69,6 @@ export class AppComponent implements OnInit {
     )
   }
 
-  newComment() {
-    //this.model = new CommentData();
-  }
-
   getReviews() {
     this.comments = new Array<CommentData>();
     this.wines = new Array<Wine>();
@@ -125,6 +121,13 @@ export class AppComponent implements OnInit {
 
 
   onSubmit(id: number, comName: string, comBody: string) {
+
+    
+    if (comName==="" || comBody==="" || comName===undefined || comBody===undefined) {
+      alert("Please input name and comment.");
+      return;
+    }
+
     const cNew = new CommentData();
     cNew.commenter = comName;
     cNew.comment = comBody;

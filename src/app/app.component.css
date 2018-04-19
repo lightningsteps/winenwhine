@@ -14,6 +14,11 @@ svg {
   margin: auto;
 }
 
+.pagination {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 #title {
   display: block;
@@ -85,6 +90,11 @@ img {
 }
 
 a {
+  color: darkorchid;
+}
+
+a:visited {
+  color: darkmagenta;
 }
 
 .wineRating {
