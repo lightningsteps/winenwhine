@@ -264,28 +264,60 @@
 
 </div>
 
-<div>
-  <mat-form-field>
-    <input [(ngModel)]="pattern" matInput placeholder="Search by title" value="Noir" name="pattern">
-  </mat-form-field>
-  <button (click)="search(pattern)" mat-raised-button>Search</button>
-</div>
+<div class="wrapper">
+  <div class="search">
+    <mat-form-field>
+      <input [(ngModel)]="pattern" matInput placeholder="Search by title" value="Noir" name="pattern">
+    </mat-form-field>
+    <button (click)="search(pattern)" mat-raised-button>Search</button>
+  </div>
 
-
-<ng-container *ngFor="let win of wines | paginate: { itemsPerPage: 2, currentPage: p, id: 'first' }; let i=index;">
-  <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-
-        <mat-panel-title>{{win.title}}</mat-panel-title>
-        <mat-panel-description> {{win.variety}}</mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-card>
-        <mat-card-content>{{win.description}}</mat-card-content>
-      </mat-card>
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>Show Comments</mat-expansion-panel-header>
+  <ng-container *ngFor="let win of wines | paginate: { itemsPerPage: 10, currentPage: p, id: 'first' }; let i=index;">
+    <mat-accordion class="flex">
+      <img src='../assets/images/{{win.image}}' class="wineImage" alt="{{win.image}}">
+      <mat-expansion-panel color="primary">
+        <mat-expansion-panel-header>
+          <div>
+            <div>
+              <mat-panel-title>{{win.title}}</mat-panel-title>
+            </div>
+            <div>
+              <mat-panel-description> {{win.country}}</mat-panel-description>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+        <mat-card>
+          <mat-card-content class="dataFlex">
+            <div class="wineCard">
+              <div class="twitter">
+                <a href="https://twitter.com/{{win.taster_twitter_handle}}">{{win.taster_twitter_handle}}</a>
+              </div>
+            </div>
+            <div class="wineCard">
+              <div class="wineTitle">Description</div>
+              <div class="wineContent">{{win.description}}</div>
+            </div>
+            <div class="wineCard">
+                <div class="wineTitle">Winery</div>
+                <div class="wineContent">{{win.winery}}</div>
+              </div>
+            <div class="wineCard">
+              <div class="wineTitle">Province</div>
+              <div class="wineContent">{{win.province}}</div>
+            </div>
+            <div class="wineCard">
+              <div class="wineTitle">Price</div>
+              <div class="wineContent">${{win.price}}/L</div>
+            </div>
+            <div class="wineRating">
+              <div class="wineTitleRating">Rating</div>
+              <div class="winePoints">{{win.points}}</div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Show Comments</mat-expansion-panel-header>
             <ng-container *ngFor="let wcom of win.comments">
               <mat-card>
                 <mat-card-subtitle>{{wcom.commenter}}</mat-card-subtitle>
@@ -304,10 +336,11 @@
                 <button mat-raised-button (click)="onSubmit(win.id, wines[i].commenter, wines[i].comment)" (click)="wines[i].commenter = ''; wines[i].comment=''">Submit Comment</button>
               </form>
             </mat-card>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </mat-expansion-panel>
-  </mat-accordion>
-</ng-container>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </ng-container>
 
-<pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>
+  <pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>
+</div>

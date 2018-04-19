@@ -11,6 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatInputModule,
     FormsModule,
     NgxPaginationModule,
-    MatExpansionModule
+    MatExpansionModule,
+    BarRatingModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

@@ -14,16 +14,16 @@ export class AppService {
   }
 
   getReviews(): Observable<any> {
-    return this._http.get( this.baseUrl + 'getReviews');
+    return this._http.get(this.baseUrl + 'getReviews');
   }
 
   getReviewsSearch(pattern: String): Observable<any> {
     console.log(this.baseUrl + pattern + '/getReview');
-    return this._http.get( this.baseUrl + pattern + '/getReview');
+    return this._http.get(this.baseUrl + pattern + '/getReview');
   }
 
   sendComments(id: number, comment: CommentData): Observable<Response> {
-    const headers = new Headers({ 'ContentType': 'application/x-www-form-urlencoded'});
+    const headers = new Headers({ 'ContentType': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
 
     return this._http.post(this.baseUrl + id.toString() + '/comments', comment, options);

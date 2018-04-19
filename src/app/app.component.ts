@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private _appService: AppService) { }
 
   comments: Array<CommentData>;
-  wines: Array<Wine>;    
+  wines: Array<Wine>;
   p: number = 1;
 
   ngOnInit() {
@@ -21,6 +21,12 @@ export class AppComponent implements OnInit {
   }
 
   search(pattern: String) {
+
+    if (pattern === "" || pattern === undefined) {
+      alert("Can't search for nothing!");
+      return;
+    }
+
     this.comments = new Array<CommentData>();
     this.wines = new Array<Wine>();
 
@@ -38,17 +44,13 @@ export class AppComponent implements OnInit {
           win.id = Number(response.json()[i]['id']);
           win.country = response.json()[i]['country'];
           win.description = response.json()[i]['description'];
-          win.designation = response.json()[i]['designation'];
           win.points = Number(response.json()[i]['points']);
           win.price = Number(response.json()[i]['price']);
           win.province = response.json()[i]['province'];
-          win.region_1 = response.json()[i]['region_1'];
-          win.region_2 = response.json()[i]['region_2'];
-          win.taster_name = response.json()[i]['taster_name'];
           win.taster_twitter_handle = response.json()[i]['taster_twitter_handle'];
           win.title = response.json()[i]['title'];
-          win.variety = response.json()[i]['variety'];
           win.winery = response.json()[i]['winery'];
+          win.image = response.json()[i]['image'];
 
           let coms = Array<CommentData>();
 
@@ -84,17 +86,13 @@ export class AppComponent implements OnInit {
           win.id = Number(response.json()[i]['id']);
           win.country = response.json()[i]['country'];
           win.description = response.json()[i]['description'];
-          win.designation = response.json()[i]['designation'];
           win.points = Number(response.json()[i]['points']);
           win.price = Number(response.json()[i]['price']);
           win.province = response.json()[i]['province'];
-          win.region_1 = response.json()[i]['region_1'];
-          win.region_2 = response.json()[i]['region_2'];
-          win.taster_name = response.json()[i]['taster_name'];
           win.taster_twitter_handle = response.json()[i]['taster_twitter_handle'];
           win.title = response.json()[i]['title'];
-          win.variety = response.json()[i]['variety'];
           win.winery = response.json()[i]['winery'];
+          win.image = response.json()[i]['image'];
 
           let coms = Array<CommentData>();
 
@@ -118,7 +116,7 @@ export class AppComponent implements OnInit {
       response => {
         console.log(response.json());
         this.wines.forEach(element => {
-          if(element.id === response.json()['id']) {
+          if (element.id === response.json()['id']) {
             element.comments = response.json()['comments'];
           }
         });
@@ -126,7 +124,7 @@ export class AppComponent implements OnInit {
   }
 
 
-  onSubmit(id: number, comName: string, comBody: string){
+  onSubmit(id: number, comName: string, comBody: string) {
     const cNew = new CommentData();
     cNew.commenter = comName;
     cNew.comment = comBody;

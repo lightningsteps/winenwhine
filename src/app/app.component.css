@@ -23,3 +23,86 @@ svg {
   text-align: center;
   font-family: 'Great Vibes', cursive;
 }
+
+.wrapper {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wineImage {
+  height: 200px; 
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  overflow: hidden;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+mat-expanison-panel {
+  height: 500px;
+}
+
+mat-accordion {
+  padding-bottom: 35px;
+}
+img {
+  object-fit: cover;
+}
+
+.search {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.dataFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+.wineTitle {
+  font-size: 1em;
+  color: dimgray;
+}
+
+.wineContent {
+  color: black;
+}
+
+.wineCard {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.twitter {
+  font-size: 1.4em;
+}
+
+a {
+}
+
+.wineRating {
+  margin-right: 10px;
+  text-align: right;
+  font-size: 5em;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-bottom: 20px;
+}
+
+.winePoints {
+  margin-bottom: 0px;
+    margin-top: 60px;
+    padding-bottom: 20px;
+}
+
+.wineTitleRating {
+  color: dimgray;
+  margin-top: -100px;
+}
